@@ -1,0 +1,45 @@
+{% extends 'sensor2.html' %}
+{% block chart %}
+
+<div class="col-12">
+    {% if status == 1 %}
+                <div class="card card-danger">
+                {% else %}
+                <div class="card card-success">
+                {% endif %}
+                    <div class="card-header">
+                    <div class="card-title">
+                    <h3>Prediksi</h3>
+                    </div>
+
+          <div class="card-tools">
+                        
+                        {% if status == 1 %}
+                            <a href="/index" class="btn btn-danger">Suhu <i class=" "></i></a>
+                         {% else %}
+                             <a href="/index" class="btn btn-success">Suhu <i class=" "></i></a>
+                         {% endif %}
+                         
+                         {% if status == 1 %}
+                            <a href="/convert" class="btn btn-danger">Prediksi <i class=" "></i></a>
+                         {% else %}
+                             <a href="/convert" class="btn btn-success">Prediksi <i class=" "></i></a>
+                         {% endif %}
+                        </div>
+                    </div>
+        <div class="card-body">
+        <div class="row">
+        <div class="col"></div>
+        <div class="col">
+        <img src="{{ image }}"/>
+          <h5 align="center">Prediksi suhu mendatang: {{ y }}</h5>
+          </div>
+        <div class="col"></div>
+        </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      
+      {% endblock %}
+
+

@@ -1,0 +1,231 @@
+{% extends 'base2.html' %}
+{% block title %} Dashboard Hidroponik {% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- AREA CHART -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Suhu Air</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div id="g1"
+                                         style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                    <!-- /.col (LEFT) -->
+                    <div class="col-md-4">
+                        <!-- BAR CHART -->
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Suhu Ruangan</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div id="g2"
+                                         style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <div class="col-md-4">
+                        <!-- DONUT CHART -->
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Kelembapan</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="g3"
+                                     style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col (RIGHT) -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- DONUT CHART -->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Kadar Nutrisi</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="g4"
+                                     style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <div class="col">
+                        <!-- DONUT CHART -->
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Pencahayaan</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <div class="h2 mb-0 font-weight-bold text-gray-800">Pencahayaan<br>Ruangan </div>
+                                        {% if cahaya == 1 %}
+                                        <h5>Terang</h5>
+                                        {% else %}
+                                        <h5>Gelap</h5>
+                                        {% endif %}
+                                        <div class="h2 mb-0 font-weight-bold text-gray-800">Status Lampu </div>
+                                        {% if cahaya == 1 %}
+                                        <h5>Redup</h5>
+                                        {% else %}
+                                        <h5>Menyala</h5>
+                                        {% endif %}
+                                        <div class="h2 mb-0 font-weight-bold text-gray-800">Sensor Cahaya</div>
+                                        <h5>{{ value }}</h5>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col"></div>
+                                            <div class="col">
+                                                {% if cahaya == 1 %}
+                                                <img src="../static/dist/img/Sun.png" alt="status" width="160" height="160">
+                                                {% else %}
+                                                <img src="../static/dist/img/Moon.png" alt="status" width="160" height="160">
+                                                {% endif %}
+                                            </div>
+                                            <div class="col"></div>
+                                    </div>
+                                    </div>
+                                </div>    
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+
+
+<div class="col-12">
+    {% if status == 1 %}
+                <div class="card card-danger">
+                {% else %}
+                <div class="card card-success">
+                {% endif %}
+                    <div class="card-header">
+                    <div class="card-title">
+                    <h3>Grafik Penggunaan Motor</h3>
+                    </div>
+
+          <div class="card-tools">
+                        
+                        {% if status == 1 %}
+                            <a href="/motoron" class="btn btn-danger">ON <i class="fas fa-power-off"></i></a>
+                         {% else %}
+                             <a href="/motoron" class="btn btn-success">ON <i class="fas fa-power-off"></i></a>
+                         {% endif %}
+                         
+                         {% if status == 1 %}
+                            <a href="/motoroff" class="btn btn-danger">OFF <i class="fas fa-times"></i></a>
+                         {% else %}
+                             <a href="/motoroff" class="btn btn-success">OFF <i class="fas fa-times"></i></a>
+                         {% endif %}
+                        </div>
+                    </div>
+        <div class="card-body">
+          <div class="chart">
+            <canvas id="cobabangzz" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            <script>
+              var ctx = document.getElementById("cobabangzz").getContext("2d");
+              var lineChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                  labels: {{ later | safe }},
+                  datasets: [
+                    {
+                      label: "Daya (watt)",
+                      data: {{ daya }},
+                      fill: false,
+                      borderColor: "rgb(211, 211, 211)",
+                      lineTension: 0.1
+                    },
+                    {
+                      label: "Waktu penggunaan (jam)",
+                      data: {{ total }},
+                      fill: false,
+                      borderColor: "rgb(0, 96, 255)",
+                      backgroundColor:'rgb(0, 96, 255)',
+                      lineTension: 0.1
+                    }
+                  ]
+                },
+                options: {
+                  responsive: true
+                }
+              });
+              
+
+            </script>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div> 
+      
+      {% block chart %} {% endblock %}
+      {% endblock %}
